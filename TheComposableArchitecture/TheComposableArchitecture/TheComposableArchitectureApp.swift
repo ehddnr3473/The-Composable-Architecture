@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+import ComposableArchitecture
+
 @main
 struct TheComposableArchitectureApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FeatureView(
+                store: Store(initialState: Feature.State()) {
+                    Feature()
+                }
+            )
         }
     }
 }
