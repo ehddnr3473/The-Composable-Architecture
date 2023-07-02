@@ -11,13 +11,15 @@ import ComposableArchitecture
 
 @main
 struct TheComposableArchitectureApp: App {
+    
+    static let store = Store(initialState: CounterFeature.State()) {
+        CounterFeature()
+            ._printChanges() // 액션을 수행한 후의 상태 변화 추적(콘솔 출력)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            FeatureView(
-                store: Store(initialState: Feature.State()) {
-                    Feature()
-                }
-            )
+            CounterView(store: TheComposableArchitectureApp.store)
         }
     }
 }
