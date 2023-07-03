@@ -46,20 +46,29 @@ struct CounterView: View {
                     .padding()
                     .background(Color.black.opacity(0.1))
                     .cornerRadius(10)
+                
+                if viewStore.isLoading {
+                    ProgressView()
+                } else if let fact = viewStore.fact {
+                    Text(fact)
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
             }
-            .alert(
-                item: viewStore.binding(
-                    get: { $0.numberFactAlert.map(FactAlert.init(title: )) },
-                    send: .factAlertDismissed
-                ),
-                content: { Alert(title: Text($0.title)) })
+//            .alert(
+//                item: viewStore.binding(
+//                    get: { $0.numberFactAlert.map(FactAlert.init(title: )) },
+//                    send: .factAlertDismissed
+//                ),
+//                content: { Alert(title: Text($0.title)) })
         }
     }
     
-    struct FactAlert: Identifiable {
-        var title: String
-        var id: String { self.title }
-    }
+//    struct FactAlert: Identifiable {
+//        var title: String
+//        var id: String { self.title }
+//    }
 }
 
 struct ContentView_Previews: PreviewProvider {
