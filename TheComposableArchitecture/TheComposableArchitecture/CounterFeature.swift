@@ -12,7 +12,6 @@ import ComposableArchitecture
 struct CounterFeature: ReducerProtocol {
     
     /// Feature가 작업을 수행하는 데 필요한 상태를 유지하는 타입(일반적으로 struct)
-    /// 단일 정수형 데이터로 구성된 상태
     struct State: Equatable {
         var count = 0;
         var fact: String?
